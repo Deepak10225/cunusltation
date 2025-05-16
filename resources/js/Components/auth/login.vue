@@ -46,8 +46,7 @@ export default {
             this.loading = true;
 
             try {
-                const response = await axios.post(
-                    "{{ url('api/login') }}",
+                const response = await axios.post(`${process.env.MIX_API_URL}/api/login`,
                     {
                         email: this.email,
                         password: this.password,
