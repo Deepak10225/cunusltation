@@ -46,12 +46,12 @@ export default {
             this.loading = true;
 
             try {
-                const response = await axios.post(`${process.env.MIX_API_URL}/api/login`,
+                const response = await axios.post(
+                    "https://cunusltation.onrender.com/api/login",
                     {
                         email: this.email,
                         password: this.password,
                     },
-
                     {
                         headers: {
                             Accept: "application/json",

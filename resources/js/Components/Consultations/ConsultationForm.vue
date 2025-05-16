@@ -25,7 +25,7 @@ export default {
     async submitForm() {
       const token = localStorage.getItem('token');
       await axios.post(
-        "{{url('api/consultations')}}",
+        'https://cunusltation.onrender.com/api/consultations',
         {
           title: this.title,
           description: this.description,

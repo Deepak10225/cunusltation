@@ -24,11 +24,7 @@ export default {
   async created() {
     const id = this.$route.params.id;
     const token = localStorage.getItem('token');
-const res = await axios.get(`{{ url('api/consultations') }}/${id}`, {
-
-
-
-
+    const res = await axios.get(`https://cunusltation.onrender.com/api/consultations/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -41,7 +37,7 @@ const res = await axios.get(`{{ url('api/consultations') }}/${id}`, {
       const id = this.$route.params.id;
       const token = localStorage.getItem('token');
       await axios.put(
-       (`{{ url('api/consultations') }}/${id}`),
+        `https://cunusltation.onrender.com/api/consultations/${id}`,
         {
           title: this.title,
           description: this.description,

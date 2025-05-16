@@ -29,7 +29,7 @@ export default {
   methods: {
     async fetchConsultations() {
       try {
-       const response = await axios.get("{{ url('api/consultations') }}", {
+        const response = await axios.get('https://cunusltation.onrender.com/api/consultations', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -47,7 +47,7 @@ export default {
     },
     async cancelConsultation(id) {
       try {
-        await axios.delete(`http://127.0.0.1:8000i/api/consultations/${id}`, {
+        await axios.delete(`https://cunusltation.onrender.com/api/consultations/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
