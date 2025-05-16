@@ -7,7 +7,7 @@ WORKDIR /var/www
 COPY package*.json ./
 RUN npm install
 
-# Copy all project files (including Vite config and resources)
+# Copy all project files
 COPY . .
 
 # Build frontend assets with Vite
@@ -36,23 +36,19 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy built Vue assets + Laravel app
+# Copy built Vue assets + app code from Node stage
 COPY --from=node /var/www /var/www
 
-# Install PHP dependencies
+
+# Install PHP dependencies for Laravel
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Set permissions for storage and cache
+# Ensure correct permissions
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
-# Expose Laravel port
+# Expose the port Laravel will run on
 EXPOSE 8000
 
-# Copy entrypoint script
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+# Start Laravel server (Render will call this as start command)
+CMD php artisan migrate --force && php artisan passport:install &&php artisan passport:keys && php artisan serve --host=0.0.0.0 --port=8000
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-
-# Start Laravel server
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
