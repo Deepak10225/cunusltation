@@ -25,7 +25,7 @@ export default {
     async submitForm() {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://127.0.0.1:8000/api/consultations',
+        "{{url('api/consultations')}}",
         {
           title: this.title,
           description: this.description,

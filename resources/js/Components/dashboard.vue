@@ -29,7 +29,7 @@ export default {
   methods: {
     async fetchConsultations() {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/consultations', {
+       const response = await axios.get("{{ url('api/consultations') }}", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

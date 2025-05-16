@@ -24,7 +24,11 @@ export default {
   async created() {
     const id = this.$route.params.id;
     const token = localStorage.getItem('token');
-    const res = await axios.get(`http://127.0.0.1:8000/api/consultations/${id}`, {
+const res = await axios.get(`{{ url('api/consultations') }}/${id}`, {
+
+
+
+
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -37,7 +41,7 @@ export default {
       const id = this.$route.params.id;
       const token = localStorage.getItem('token');
       await axios.put(
-        `http://127.0.0.1:8000/api/consultations/${id}`,
+       (`{{ url('api/consultations') }}/${id}`),
         {
           title: this.title,
           description: this.description,

@@ -34,7 +34,7 @@ export default {
   methods: {
     async fetchConsultations() {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://127.0.0.1:8000/api/consultations', {
+      const res = await axios.get("{{url('api/consultations')}}", {
         headers: { Authorization: `Bearer ${token}` },
         params: { search: this.search },
       });
@@ -43,7 +43,7 @@ export default {
     async deleteConsultation(id) {
       if (confirm('Are you sure you want to delete?')) {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://127.0.0.1:8000/api/consultations/${id}`, {
+        await axios.delete(`{{ url('api/consultations') }}/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         this.fetchConsultations();
