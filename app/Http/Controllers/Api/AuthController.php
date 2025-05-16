@@ -32,6 +32,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        dd('a');
        
         // if ($validator->fails()) return response()->json($validator->errors(), 422);
         if (!Auth::attempt($request->only('email', 'password'))) {

@@ -58,13 +58,13 @@ export default {
                         },
                     }
                 );
-                console.log("Login success:", response.data); // Debug log
+                console.log("Login success:", response.data);
 
                 localStorage.setItem("token", response.data.token);
                 this.$router.push("/home");
             } catch (err) {
-                console.error("Login failed:", err); // Debug log
-                this.error = "Invalid credentials"; // Generic fallback
+                console.error("Login failed:", err);
+                this.error = "Invalid credentials";
             } finally {
                 this.loading = false;
             }
