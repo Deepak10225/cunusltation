@@ -50,5 +50,5 @@ RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 EXPOSE 8000
 
 # Start Laravel server (Render will call this as start command)
-CMD php artisan migrate --force && php artisan passport:install &&php artisan passport:keys && php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan migrate --force && php artisan passport:install && php artisan serve --host=0.0.0.0 --port=8000
 
