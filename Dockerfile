@@ -48,9 +48,6 @@ RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
 # Expose the port Laravel will run on
 EXPOSE 8000
-RUN php artisan passport:install
-RUN php artisan passport:keys
-
 
 # Start Laravel server (Render will call this as start command)
 CMD php artisan serve --host=0.0.0.0 --port=8000
